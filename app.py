@@ -26,7 +26,7 @@ SenMedicion = {
 }
 #en la base de datos se guardara el promedio de la medicion de los sensores por horas
 
-@app.get("/getRealTimeData")
+@app.get("/")
 def getRealTimeData():
     return SenMedicion
 
@@ -36,7 +36,7 @@ def getRealTimeData(data : DataRealTime):
     SenMedicion['senHumedadAire'].append(data.senHumedadAire)  
     SenMedicion['senPh'].append(data.senPh)
     SenMedicion['senCalidadAire'].append(data.senPh) 
-    
+
 
 
 @app.get("/home")
