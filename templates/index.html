@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Certificado de Conclusión</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    
+    .certificate {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 30px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    h1 {
+      margin-top: 0;
+      color: #333;
+      text-transform: uppercase;
+    }
+    
+    p {
+      margin-bottom: 10px;
+    }
+    
+    .student-name {
+      font-size: 30px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .course {
+      font-size: 20px;
+      color: #555;
+    }
+    
+    .score {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #555;
+    }
+    
+    .date {
+      font-size: 18px;
+      font-style: italic;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="certificate">
+    <h1>Certificado de Conclusión</h1>
+    <p>A quien certifica el curso:</p>
+    <p class="student-name">{{senHumedadAire}}</p>
+    <p>ha completado el curso:</p>
+    <p class="course">{{senHumedadAgua}}</p>
+    <p>con la siguiente puntuación:</p>
+    <p class="score">{{senPh}}</p>
+    <p>Fecha:</p>
+    <p class="date">{{senCalidadAire}}</p>
+  </div>
+</body>
+</html>
