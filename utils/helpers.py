@@ -77,5 +77,6 @@ def crearPdf(fecha,registros):
         if registro.get("fecha")== fecha:
             html = template.render(registro)
             pdfkit.from_string(html, 'nuevo_pdf.pdf',options=options, configuration=pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'))
-            print(registro)
-crearPdf('2023/10/10',var)
+            # print(registro)
+
+# crearPdf('2023/10/10',var)
