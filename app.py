@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-#para visualizar los datos del cursor que devuelve el method find
+#para visualizar los datos del cursor que devuelve el method find oeoeoeoeoeoeoeooeoeoe
 from bson import ObjectId
 #db
 from config.db import client
