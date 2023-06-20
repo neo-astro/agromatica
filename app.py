@@ -74,36 +74,37 @@ def getAllData():
 
 @app.post("/saveData")
 def saveData(datos):
-    hora = str(getHora())
-    # el tipo de diccionario que me envia
-    registro = {
-        "fecha":    getHora(),
-        "senHumedadAgua": {},
-        "senHumedadAire": {},
-        "senPh":          {},
-        "senCalidadAire": {}
-    }
+    return datos
+    # hora = str(getHora())
+    # # el tipo de diccionario que me envia
+    # registro = {
+    #     "fecha":    getHora(),
+    #     "senHumedadAgua": {},
+    #     "senHumedadAire": {},
+    #     "senPh":          {},
+    #     "senCalidadAire": {}
+    # }
 
-    query = {'fecha':datos.get('fecha')}
-    consultaRegistro = DbRegistros.find_one(query)
+    # query = {'fecha':datos.get('fecha')}
+    # consultaRegistro = DbRegistros.find_one(query)
 
-    if consultaRegistro:
-        consultaRegistro['senHumedadAgua'][hora] = datos.get('senHumedadAgua')
-        consultaRegistro['senHumedadAire'][hora] = datos.get('senHumedadAire')
-        consultaRegistro['senPh'][hora] = datos.get('senPh')
-        consultaRegistro['senCalidadAire'][hora] = datos.get('senCalidadAire')
+    # if consultaRegistro:
+    #     consultaRegistro['senHumedadAgua'][hora] = datos.get('senHumedadAgua')
+    #     consultaRegistro['senHumedadAire'][hora] = datos.get('senHumedadAire')
+    #     consultaRegistro['senPh'][hora] = datos.get('senPh')
+    #     consultaRegistro['senCalidadAire'][hora] = datos.get('senCalidadAire')
 
-        #actualizar dato
-        consultaRegistro.update_one({'_id': consultaRegistro['_id']}, {'$set': consultaRegistro})
-        return 'ok'
-    else :
-        registro['senHumedadAgua'][hora] = datos.get('senHumedadAgua')
-        registro['senHumedadAire'][hora] = datos.get('senHumedadAire')
-        registro['senPh'][hora] = datos.get('senPh')
-        registro['senCalidadAire'][hora] = datos.get('senCalidadAire')
-        newRegistro  = dict(registro) 
-        DbRegistros.insert_one(newRegistro) 
-        return 'error'
+    #     #actualizar dato
+    #     consultaRegistro.update_one({'_id': consultaRegistro['_id']}, {'$set': consultaRegistro})
+    #     return 'ok'
+    # else :
+    #     registro['senHumedadAgua'][hora] = datos.get('senHumedadAgua')
+    #     registro['senHumedadAire'][hora] = datos.get('senHumedadAire')
+    #     registro['senPh'][hora] = datos.get('senPh')
+    #     registro['senCalidadAire'][hora] = datos.get('senCalidadAire')
+    #     newRegistro  = dict(registro) 
+    #     DbRegistros.insert_one(newRegistro) 
+    #     return 'error'
 
 
 
@@ -116,6 +117,7 @@ def saveData(datos):
     # return str(id)
 @app.post("/prueba")
 def prueba():
+    print('ingreso')
     return 'dato'
 
 
