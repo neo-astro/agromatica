@@ -65,9 +65,9 @@ def getAllData():
     cursor = DbRegistros.find()
     data = [doc for doc in cursor]
 
-    for doc in data:
-        doc['_id'] = str(doc['_id'])
-    return {'data': data}
+    # for doc in data:
+    #     doc['_id'] = str(doc['_id'])
+    return  data
 
 
 #guardar datos para tiempo real
