@@ -5,7 +5,7 @@ from utils.helpers import *
 
 
 class Data(BaseModel):
-  fecha:          str = getDate(),
+  fecha:          str = getDate()
   senHumedadAgua: dict
   senHumedadAire: dict
   senPh:          dict
