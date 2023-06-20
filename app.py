@@ -146,27 +146,32 @@ async def generar_pdf(fecha:str):
             "senHumedadAgua": {"1": 40,"2":50 },
             "senPh": {"1": 40,"2":50 },
             "senCalidadAire": {"1": 40,"2":50 }
+        },
+         {
+            "_id": "648e5b3d46448fa5c63d3828",
+            "fecha": "2023-10-12",
+            "senHumedadAire": {"1": 40,"2":50 },
+            "senHumedadAgua": {"1": 40,"2":50 },
+            "senPh": {"1": 40,"2":50 },
+            "senCalidadAire": {"1": 40,"2":50 }
+        },
+         {
+            "_id": "648e5b3d46448fa5c63d3828",
+            "fecha": "2023-10-11",
+            "senHumedadAire": {"1": 40,"2":50 },
+            "senHumedadAgua": {"1": 40,"2":50 },
+            "senPh": {"1": 40,"2":50 },
+            "senCalidadAire": {"1": 40,"2":50 }
         }
     ]
 }
         
-        pdf_bytes = crearPdf(fecha, var)
-
-        nombre_archivo = f'consulta_{fecha}.pdf'
-        return FileResponse(
-            pdf_bytes,
-            filename=nombre_archivo,
-            media_type="application/pdf"
-        )
-
-
-
-        # nombreArchivo = f'consulta_{fecha}.pdf'
-        # crearPdf(fecha,var)
-        # ruta_archivo = nombreArchivo  # Ruta al archivo PDF en tu servidor
-        # time.sleep(2)
-        # return FileResponse(path=nombreArchivo,filename= nombreArchivo)
-        # # return RedirectResponse(url_destino)
+        nombreArchivo = f'consulta_{fecha}.pdf'
+        crearPdf(fecha,var)
+        ruta_archivo = nombreArchivo  # Ruta al archivo PDF en tu servidor
+        time.sleep(2)
+        return FileResponse(path=nombreArchivo,filename= nombreArchivo)
+        # return RedirectResponse(url_destino)
  
 
 
