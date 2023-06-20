@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Request
 from fastapi.middleware.cors import CORSMiddleware
 
 #para visualizar los datos del cursor que devuelve el method find
@@ -73,7 +73,7 @@ def getAllData():
 #guardar datos para tiempo real
 
 @app.post("/saveData")
-def saveData(datos):
+async def saveData(datos: dict):
     print(datos)
 
     # hora = str(getHora())
