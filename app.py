@@ -74,7 +74,8 @@ def getAllData():
 
 @app.post("/saveData")
 def saveData(datos):
-    return datos
+    print(datos)
+
     # hora = str(getHora())
     # # el tipo de diccionario que me envia
     # registro = {
