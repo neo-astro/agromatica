@@ -64,7 +64,6 @@ var = {
     ]
 }
 
-
 def crearPdf(fecha,registros):
     # Cargar el template
     env = Environment(loader=FileSystemLoader("templates"))

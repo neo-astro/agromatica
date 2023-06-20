@@ -1,3 +1,7 @@
+from fastapi import FastAPI
+from fastapi.responses import FileResponse
+import time
+#para visualizar los datos del cursor que devuelve el method find oeoeoeoeoeoeoeooeoeoe
 from fastapi import FastAPI,Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -10,6 +14,7 @@ from models.data import Data,DataRealTime
 
 from schemas.dataSchemas import datosEntity
 import random
+from utils.helpers import crearPdf
 
 from utils.helpers import *
 
@@ -65,11 +70,6 @@ def getAllData():
     return {'data': data}
 
 
-
-
-
-
-
 #guardar datos para tiempo real
 
 @app.post("/saveData")
@@ -108,9 +108,6 @@ async def saveData(datos: dict):
 
 
 
-
-
-
     # newData= dict(datos)
     # id = DbRegistros.insert_one(newData).inserted_id   
     # print(newData)
@@ -132,6 +129,33 @@ def getRealTimeData(data : DataRealTime):
 
 
 
+    newData= dict(data)
+    id = DbRegistros.insert_one(newData).inserted_id   
+    print(newData)
+    return str(id)
+
+@app.get("/consultas/{fecha}")
+async def generar_pdf(fecha:str):
+    if fecha:
+        var = {
+    "data": [
+        {
+            "_id": "648e5b3d46448fa5c63d3828",
+            "fecha": "2023-10-10",
+            "senHumedadAire": {"1": 40,"2":50 },
+            "senHumedadAgua": {"1": 40,"2":50 },
+            "senPh": {"1": 40,"2":50 },
+            "senCalidadAire": {"1": 40,"2":50 }
+        }
+    ]
+}
+        nombreArchivo = f'consulta_{fecha}.pdf'
+        crearPdf(fecha,var)
+        ruta_archivo = nombreArchivo  # Ruta al archivo PDF en tu servidor
+        time.sleep(2)
+        return FileResponse(path=nombreArchivo,filename= nombreArchivo)
+
+ 
 
 
 # @app.post("/addData")
@@ -147,53 +171,18 @@ def getRealTimeData(data : DataRealTime):
 async def generar_pdf(fecha:str):
     if fecha:
         var = {
-    "data": [
-        {
+        "data": [
+             {
             "_id": "648e5b3d46448fa5c63d3828",
             "fecha": "2023-10-10",
-            "senHumedadAire": [58],
-            "senHumedadAgua": [85],
-            "senPh": [85],
-            "senCalidadAire": [9]
-        },
-        {
-            "_id": "648f39edf219464fa596fb27",
-            "id": "string",
-            "fecha": "string",
-            "senHumedadAgua": "string",
-            "senHumedadAire": "string",
-            "senPh": "string",
-            "senCalidadAire": "string"
-        },
-        {
-            "_id": "648f39fba47ae2620cb5f2c5",
-            "id": "string",
-            "fecha": "string",
-            "senHumedadAgua": "string",
-            "senHumedadAire": "string",
-            "senPh": "string",
-            "senCalidadAire": "string"
-        },
-        {
-            "_id": "648f3e49722fca362a37045b",
-            "fecha": "2023-06-18",
-            "senHumedadAgua": [
-                "string"
-            ],
-            "senHumedadAire": [
-                "string"
-            ],
-            "senPh": [
-                "string"
-            ],
-            "senCalidadAire": [
-                "string"
-            ]
+            "senHumedadAire":  [80],
+            "senHumedadAgua": [50],
+            "senPh": [40],
+            "senCalidadAire":[40]
+            }
+          ]
         }
-    ]
-}
         nombreArchivo = f'consulta_{fecha}.pdf'
         crearPdf(fecha,var)
-        ruta_archivo = nombreArchivo  # Ruta al archivo PDF en tu servidor
         time.sleep(2)
         return FileResponse(path=nombreArchivo,filename= nombreArchivo)
