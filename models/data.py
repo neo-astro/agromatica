@@ -5,11 +5,11 @@ from utils.helpers import *
 
 
 class Data(BaseModel):
-  fecha:          str = getTime()
-  senHumedadAgua: List[str]
-  senHumedadAire: List[str]
-  senPh:          List[str]
-  senCalidadAire: List[str]
+  fecha:          str = getDate(),
+  senHumedadAgua: dict
+  senHumedadAire: dict
+  senPh:          dict
+  senCalidadAire: dict
 
 
 class DataRealTime(BaseModel):
