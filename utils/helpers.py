@@ -4,6 +4,7 @@ import os
 
 from jinja2 import Environment, FileSystemLoader
 import pdfkit
+import tempfile
 
 
 
@@ -29,7 +30,26 @@ def crearPdf(fecha,registros):
         'margin-left': '0.1in'
     }
     
+    # for registro in registros["data"]:
+    #     if registro.get("fecha") == fecha:
+    #         html = template.render(registro)
+    #         pdfkit.from_string(html,f'consulta_{fecha}.pdf',options=options)
+
+
+    #generar pdf en ejecucion
     for registro in registros["data"]:
         if registro.get("fecha") == fecha:
             html = template.render(registro)
-            pdfkit.from_string(html,f'consulta_{fecha}.pdf',options=options)
+
+            # Crear un archivo temporal para almacenar el HTML
+            with tempfile.NamedTemporaryFile(suffix=".html", delete=False) as temp_file:
+                temp_file.write(html.encode("utf-8"))
+                temp_file.close()
+
+                # Convertir el HTML a PDF utilizando pdfkit y wkhtmltopdf
+                pdf_bytes = pdfkit.from_file(temp_file.name, False, options=options)
+
+            # Eliminar el archivo temporal
+            temp_file.unlink()
+
+            return pdf_bytes

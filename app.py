@@ -149,12 +149,28 @@ async def generar_pdf(fecha:str):
         }
     ]
 }
-        nombreArchivo = f'consulta_{fecha}.pdf'
-        crearPdf(fecha,var)
-        ruta_archivo = nombreArchivo  # Ruta al archivo PDF en tu servidor
-        time.sleep(2)
-        return FileResponse(path=nombreArchivo,filename= nombreArchivo),RedirectResponse('https://www.facebook.com')
+        
+        pdf_bytes = crearPdf(fecha, var)
+
+        nombre_archivo = f'consulta_{fecha}.pdf'
+        return FileResponse(
+            pdf_bytes,
+            filename=nombre_archivo,
+            media_type="application/pdf"
+        )
+
+
+
+        # nombreArchivo = f'consulta_{fecha}.pdf'
+        # crearPdf(fecha,var)
+        # ruta_archivo = nombreArchivo  # Ruta al archivo PDF en tu servidor
+        # time.sleep(2)
+        # return FileResponse(path=nombreArchivo,filename= nombreArchivo)
+        # # return RedirectResponse(url_destino)
  
+
+
+
 
 
 # @app.post("/addData")
