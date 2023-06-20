@@ -108,9 +108,6 @@ async def saveData(datos: dict):
 
 
 
-
-
-
     # newData= dict(datos)
     # id = DbRegistros.insert_one(newData).inserted_id   
     # print(newData)
