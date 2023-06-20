@@ -57,10 +57,7 @@ var = {
     ]
 }
 
-
 def crearPdf(fecha,registros):
-    
-
     # Cargar el template
     env = Environment(loader=FileSystemLoader("templates"))
     template = env.get_template("index.html")
@@ -76,7 +73,6 @@ def crearPdf(fecha,registros):
     for registro in registros["data"]:
         if registro.get("fecha")== fecha:
             html = template.render(registro)
-            pdfkit.from_string(html, 'nuevo_pdf.pdf',options=options, configuration=pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'))
-            # print(registro)
-
-# crearPdf('2023/10/10',var)
+            pdfkit.from_string(html,f'consulta_{fecha}.pdf',options=options, configuration=pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'))
+            ##print(registro)
+##crearPdf('2023/10/10',var)

@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
+import time
 #para visualizar los datos del cursor que devuelve el method find oeoeoeoeoeoeoeooeoeoe
 from bson import ObjectId
 #db
@@ -8,7 +10,7 @@ from models.data import Data,DataRealTime
 
 from schemas.dataSchemas import datosEntity
 import random
-
+from utils.helpers import crearPdf
 app = FastAPI()
 
 DbRegistros=client.DbAgromatica.Registros
@@ -55,3 +57,60 @@ def addData(data:Data):
     id = DbRegistros.insert_one(newData).inserted_id   
     print(newData)
     return str(id)
+
+@app.get("/consultas/{fecha}")
+async def generar_pdf(fecha:str):
+    if fecha:
+        var = {
+    "data": [
+        {
+            "_id": "648e5b3d46448fa5c63d3828",
+            "fecha": "2023-10-10",
+            "senHumedadAire": [58],
+            "senHumedadAgua": [85],
+            "senPh": [85],
+            "senCalidadAire": [9]
+        },
+        {
+            "_id": "648f39edf219464fa596fb27",
+            "id": "string",
+            "fecha": "string",
+            "senHumedadAgua": "string",
+            "senHumedadAire": "string",
+            "senPh": "string",
+            "senCalidadAire": "string"
+        },
+        {
+            "_id": "648f39fba47ae2620cb5f2c5",
+            "id": "string",
+            "fecha": "string",
+            "senHumedadAgua": "string",
+            "senHumedadAire": "string",
+            "senPh": "string",
+            "senCalidadAire": "string"
+        },
+        {
+            "_id": "648f3e49722fca362a37045b",
+            "fecha": "2023-06-18",
+            "senHumedadAgua": [
+                "string"
+            ],
+            "senHumedadAire": [
+                "string"
+            ],
+            "senPh": [
+                "string"
+            ],
+            "senCalidadAire": [
+                "string"
+            ]
+        }
+    ]
+}
+        nombreArchivo = f'consulta_{fecha}.pdf'
+        crearPdf(fecha,var)
+        ruta_archivo = nombreArchivo  # Ruta al archivo PDF en tu servidor
+        time.sleep(2)
+        return FileResponse(path=nombreArchivo,filename= nombreArchivo)
+
+ 
