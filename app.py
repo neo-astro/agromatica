@@ -152,8 +152,8 @@ async def generar_pdf(fecha:str):
         nombreArchivo = f'consulta_{fecha}.pdf'
         crearPdf(fecha,var)
         ruta_archivo = nombreArchivo  # Ruta al archivo PDF en tu servidor
-        FileResponse(path=nombreArchivo,filename= nombreArchivo)
-        return RedirectResponse('https://www.facebook.com')
+        time.sleep(2)
+        return FileResponse(path=nombreArchivo,filename= nombreArchivo),RedirectResponse('https://www.facebook.com')
  
 
 
