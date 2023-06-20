@@ -1,10 +1,17 @@
 import datetime
+import time
 import os
+
 from jinja2 import Environment, FileSystemLoader
 import pdfkit
 
 
-def getTime():
+
+def getHora():
+    return time.strftime('%H')
+
+
+def getDate():
     fecha_actual = datetime.date.today()
     fecha_formateada = fecha_actual.strftime("%Y-%m-%d")
     return fecha_formateada
