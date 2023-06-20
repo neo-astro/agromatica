@@ -4,7 +4,7 @@ import time
 #para visualizar los datos del cursor que devuelve el method find oeoeoeoeoeoeoeooeoeoe
 from fastapi import FastAPI,Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse,RedirectResponse
 #para visualizar los datos del cursor que devuelve el method find
 from bson import ObjectId
 #db
@@ -65,8 +65,8 @@ def getAllData():
     cursor = DbRegistros.find()
     data = [doc for doc in cursor]
 
-    # for doc in data:
-    #     doc['_id'] = str(doc['_id'])
+    for doc in data:
+        doc['_id'] = str(doc['_id'])
     return  data
 
 
@@ -152,9 +152,8 @@ async def generar_pdf(fecha:str):
         nombreArchivo = f'consulta_{fecha}.pdf'
         crearPdf(fecha,var)
         ruta_archivo = nombreArchivo  # Ruta al archivo PDF en tu servidor
-        time.sleep(2)
-        return FileResponse(path=nombreArchivo,filename= nombreArchivo)
-
+        FileResponse(path=nombreArchivo,filename= nombreArchivo)
+        return RedirectResponse('https://www.facebook.com')
  
 
 
