@@ -16,6 +16,10 @@
   <button onclick="ver()">
     xd
   </button>
+
+  <button onclick="pdf()">
+    pdf
+  </button>
   <script>
     function ver(){
       const data = {
@@ -41,6 +45,25 @@
         console.error('Error:', error);
       });
     } 
+
+
+  function pdf(){
+    const fecha = "2023-10-10"; // La fecha que deseas consultar
+
+    fetch(`/consultas/${fecha}`)
+      .then(response => response.blob())
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `consulta_${fecha}.pdf`;
+        a.click();
+        URL.revokeObjectURL(url);
+      })
+      .catch(error => {
+        console.error("Error al obtener el archivo PDF:", error);
+      });
+  }  
   </script>
 </body>
 </html>
