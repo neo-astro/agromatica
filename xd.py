@@ -9,7 +9,6 @@
 #             "senCalidadAire": {"1": 40,"2":50 }
 #         }
 
-
 registro = {
         "data": [
              {
@@ -24,8 +23,7 @@ registro = {
         }
 
 for dato in registro:
-  print(registro[dato])
-  for ele in registro[dato][0]:
-    if isinstance(registro[dato][0], dict):
-      for i in registro[ele]:
-        print(ele,i,registro[dato][0][i])
+  for keyData in registro[dato][0]:
+    if isinstance(registro[dato][0][keyData], dict):
+      for valor in registro[dato][0][keyData]:
+        print(registro[dato][0][keyData][valor] )

@@ -33,3 +33,4 @@ def crearPdf(fecha,registros):
         if registro.get("fecha") == fecha:
             html = template.render(registro)
             pdfkit.from_string(html,f'consulta_{fecha}.pdf',options=options)
+    # ,configuration=pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')

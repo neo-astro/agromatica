@@ -7,7 +7,7 @@
 </head>
 
 
-<a href="http://127.0.0.1:8000/consultas/2023-10-10">pdf</a>
+<a href="https://agromatica.onrender.com/consultas/2023-10-10">pdf</a>
 
 
 
@@ -49,8 +49,9 @@
 
   function pdf(){
     const fecha = "2023-10-10"; // La fecha que deseas consultar
-
-    fetch(`/consultas/${fecha}`)
+    // http://127.0.0.1:8000/
+    // https://agromatica.onrender.com
+    fetch(`https://agromatica.onrender.com/consultas/${fecha}`)
       .then(response => response.blob())
       .then(blob => {
         const url = URL.createObjectURL(blob);
