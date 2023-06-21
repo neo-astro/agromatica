@@ -4,7 +4,7 @@ import time
 #para visualizar los datos del cursor que devuelve el method find oeoeoeoeoeoeoeooeoeoe
 from fastapi import FastAPI,Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse,RedirectResponse
+from fastapi.responses import FileResponse,RedirectResponse,Response
 #para visualizar los datos del cursor que devuelve el method find
 from bson import ObjectId
 #db
@@ -170,7 +170,7 @@ async def generar_pdf(fecha:str):
         crearPdf(fecha,var)
         ruta_archivo = nombreArchivo  # Ruta al archivo PDF en tu servidor
         time.sleep(2)
-        return FileResponse(path=nombreArchivo,filename= nombreArchivo)
+        return FileResponse(path=nombreArchivo,   media_type="application/pdf",filename= nombreArchivo)
         # return RedirectResponse(url_destino)
  
 
@@ -187,22 +187,22 @@ async def generar_pdf(fecha:str):
 
 
 
-@app.get("/consultas/{fecha}")
-async def generar_pdf(fecha:str):
-    if fecha:
-        var = {
-        "data": [
-             {
-            "_id": "648e5b3d46448fa5c63d3828",
-            "fecha": "2023-10-10",
-            "senHumedadAire":  [80],
-            "senHumedadAgua": [50],
-            "senPh": [40],
-            "senCalidadAire":[40]
-            }
-          ]
-        }
-        nombreArchivo = f'consulta_{fecha}.pdf'
-        crearPdf(fecha,var)
-        time.sleep(2)
-        return FileResponse(path=nombreArchivo,filename= nombreArchivo)
+# @app.get("/consultas/{fecha}")
+# async def generar_pdf(fecha:str):
+#     if fecha:
+#         var = {
+#         "data": [
+#              {
+#             "_id": "648e5b3d46448fa5c63d3828",
+#             "fecha": "2023-10-10",
+#             "senHumedadAire":  [80],
+#             "senHumedadAgua": [50],
+#             "senPh": [40],
+#             "senCalidadAire":[40]
+#             }
+#           ]
+#         }
+#         nombreArchivo = f'consulta_{fecha}.pdf'
+#         crearPdf(fecha,var)
+#         time.sleep(2)
+#         return FileResponse(path=nombreArchivo,filename= nombreArchivo)
