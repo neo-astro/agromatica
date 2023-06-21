@@ -170,7 +170,8 @@ async def generar_pdf(fecha:str):
         crearPdf(fecha,var)
         ruta_archivo = nombreArchivo  # Ruta al archivo PDF en tu servidor
         time.sleep(2)
-        return FileResponse(path=nombreArchivo,   media_type="application/pdf",filename= nombreArchivo)
+        FileResponse(path=nombreArchivo,   media_type="application/pdf",filename= nombreArchivo)
+        return RedirectResponse('https://www.youtube.com/results?search_query=yield+python')
         # return RedirectResponse(url_destino)
  
 
