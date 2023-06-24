@@ -81,7 +81,7 @@
       <span>100</span>
     </div>
   
-    {% for registro,d in senHumedadAire,distancia %}
+    {% for registro,d in zip(senHumedadAire,distancia) %}
 
     <div class="bar" style="height: {{senHumedadAire['registro']}}%;  left: {{d}}%;"></div> <!-- Barra 1 -->
     <!-- <div class="bar" style="height: 60%;  left: 7%;"></div> 
