@@ -58,51 +58,7 @@
   </style>
 
 </head>
-<body>
-
-    <!-- {% for dato in registro %}
-      <p>Fecha:</p>
-
-      <table>
-        <thead>
-          <tr>Sensor</tr>
-          <tr>Medicion</tr>
-        </thead>
-        <tbody>
-          
-
-        </tbody>
-        
-      </table>
-    {% endfor %} -->
-
-
-    
-
-
-    <!-- {% for ele in registro %}
-
-    {% if isinstance(registro[ele], dict) %}
-    {% for i in registro[ele] %}
-     <div >{{ele}}</div>
-    {% endfor %}
-    {% endif %}
-    
-    {% endfor %} -->
-
-
-
-
-    <!-- <div>{{senHumedadAire['1']}}
-    </div>
-    <div>{{fecha}}
-    </div>
-    <h1>hola</h1> -->
-
-
-
-
-    
+<body>    
     <div class="bar-chart">
       <div class="axis-x">
         {% for registro in senHumedadAire %}
@@ -111,6 +67,13 @@
           <p>
             {{registro}}
           </p>
+          {% if int(registro) < 12 %}
+          <p>am</p>
+          {% else %}
+          <p>
+            pm
+          </p>
+        {% endif %}
          
         </span>
         
