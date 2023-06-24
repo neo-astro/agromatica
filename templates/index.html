@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Certificado de Conclusión</title>
+  <title>Registro {{fecha}}</title>
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background-color: #f1f1f1;
+    .bar-chart {
+      margin-left: 40px;
+      width: 90%;
+      height: 200px;
+      border: 1px solid #000;
+      position: relative;
     }
     
-    .certificate {
-      max-width: 600px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 30px;
-      border: 1px solid #ccc;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .bar {
+      background-color: rgb(21, 166, 77);
+      position: absolute;
+      bottom: 0;
+      min-width: 25px;
+    }
+    
+    .axis-x {
+      position: absolute;
+      bottom: -35px;
+      margin-left: 10px;
+      width: 100%;
+    }
+    
+    .axis-x span {
+      margin-left: 25px;
+      font-size: 10px;
+      display: inline-block;
       text-align: center;
     }
     
-    h1 {
-      margin-top: 0;
-      color: #333;
-      text-transform: uppercase;
+    .axis-y {
+      position: absolute;
+      left: -50px;
+      top: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-end;
+      justify-content: space-between;
     }
     
-    p {
-      margin-bottom: 10px;
+    .axis-y span {
+      display: block;
+      width: 30px;
+      text-align: right;
     }
-    
-    .student-name {
-      font-size: 30px;
-      font-weight: bold;
-      color: #333;
+
+    p{
+      margin: 0;
+      padding: 0;
     }
-    
-    .course {
-      font-size: 20px;
-      color: #555;
-    }
-    
-    .score {
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: #555;
-    }
-    
-    .date {
-      font-size: 18px;
-      font-style: italic;
-      color: #777;
-    }
+
   </style>
+
 </head>
 <body>
-  <div class="certificate">
 
     <!-- {% for dato in registro %}
       <p>Fecha:</p>
@@ -88,14 +91,82 @@
     {% endfor %} -->
 
 
-    <div>{{senHumedadAire['1']}}
+
+
+    <!-- <div>{{senHumedadAire['1']}}
     </div>
     <div>{{fecha}}
     </div>
-    <h1>hola</h1>
+    <h1>hola</h1> -->
 
-    <a href="http://127.0.0.1:8000/consultas/2023-10-10">Hola</a>
-  </div>
+
+
+
+    
+    <div class="bar-chart">
+      <div class="axis-x">
+        {% for registro in senHumedadAire %}
+          
+        <span>
+          <p>
+            {{registro}}
+          </p>
+          <p>
+            {% if registro < 12 %}
+              am
+            {% else %}
+              pm
+            {% endif %}
+          </p>
+        </span>
+        
+        {% endfor %}
+        <!-- Añade más valores en el eje X según necesites -->
+      </div>
+      <div class="axis-y">
+        <span>0</span>
+        <span>20</span>
+        <span>40</span>
+        <span>60</span>
+        <span>80</span>
+        <span>100</span>
+      </div>
+
+      {% for registro in senHumedadAire %}
+      <div class="bar" style="height: {{senHumedadAire[registro]}}%;  left: 3%;"></div> <!-- Barra 1 -->
+
+      <!-- <div class="bar" style="height: 60%;  left: 7%;"></div> 
+      <div class="bar" style="height: 90%;  left: 11%;"></div>
+      <div class="bar" style="height: 90%;  left: 15%;"></div>
+      <div class="bar" style="height: 80%;  left: 19%;"></div>
+      <div class="bar" style="height: 60%;  left: 23%;"></div>
+      <div class="bar" style="height: 90%;  left: 27%;"></div>
+      <div class="bar" style="height: 90%;  left: 31%;"></div>
+      <div class="bar" style="height: 80%;  left: 35%;"></div>
+      <div class="bar" style="height: 60%;  left: 39%;"></div>
+      <div class="bar" style="height: 90%;  left: 43%;"></div>
+      <div class="bar" style="height: 90%;  left: 47%;"></div>
+      <div class="bar" style="height: 80%;  left: 51%;"></div>
+      <div class="bar" style="height: 60%;  left: 55%;"></div>
+      <div class="bar" style="height: 90%;  left: 59%;"></div>
+      <div class="bar" style="height: 90%;  left: 63%;"></div>
+      <div class="bar" style="height: 80%;  left: 67%;"></div>
+      <div class="bar" style="height: 60%;  left: 71%;"></div>
+      <div class="bar" style="height: 90%;  left: 75%;"></div>
+      <div class="bar" style="height: 90%;  left: 79%;"></div>
+      <div class="bar" style="height: 80%;  left: 83%;"></div>
+      <div class="bar" style="height: 60%;  left: 87%;"></div>
+      <div class="bar" style="height: 90%;  left: 91%;"></div>
+      <div class="bar" style="height: 90%;  left: 95%;"></div>  -->
+      {% endfor %}
+      <!-- Añade más barras y sus posiciones según necesites -->
+    </div>
+
+
+
+
+
+    <!-- <a href="http://127.0.0.1:8000/consultas/2023-10-10">Hola</a> -->
 
 
 </body>
