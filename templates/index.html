@@ -67,13 +67,6 @@
           <p>
             {{registro}}
           </p>
-          {% if int(registro) < 12 %}
-          <p>am</p>
-          {% else %}
-          <p>
-            pm
-          </p>
-        {% endif %}
          
         </span>
         
@@ -91,7 +84,6 @@
 
       {% for registro in senHumedadAire %}
       <div class="bar" style="height: {{senHumedadAire[registro]}}%;  left: 3%;"></div> <!-- Barra 1 -->
-
       <!-- <div class="bar" style="height: 60%;  left: 7%;"></div> 
       <div class="bar" style="height: 90%;  left: 11%;"></div>
       <div class="bar" style="height: 90%;  left: 15%;"></div>
@@ -118,6 +110,10 @@
       {% endfor %}
       <!-- Añade más barras y sus posiciones según necesites -->
     </div>
+
+    {% for i in distancia %}
+      <div>{{i}}</div>
+    {% endfor %}
 
 
 

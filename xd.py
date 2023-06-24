@@ -22,8 +22,11 @@ registro = {
           ]
         }
 
-for dato in registro:
-  for keyData in registro[dato][0]:
-    if isinstance(registro[dato][0][keyData], dict):
-      for valor in registro[dato][0][keyData]:
-        print(registro[dato][0][keyData][valor] )
+# for dato in registro:
+#   for keyData in registro[dato][0]:
+#     if isinstance(registro[dato][0][keyData], dict):
+#       for valor in registro[dato][0][keyData]:
+#         print(registro[dato][0][keyData][valor] )
+
+
+registro

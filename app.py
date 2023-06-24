@@ -164,8 +164,7 @@ async def generar_pdf(fecha:str):
             "senCalidadAire": {"1": 40,"2":50 }
         }
     ]
-}
-        
+}        
         nombreArchivo = f'consulta_{fecha}.pdf'
         crearPdf(fecha,var)
         time.sleep(2)
