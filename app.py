@@ -137,8 +137,7 @@ def getRealTimeData(data : DataRealTime):
 @app.get("/consultas/{fecha}")
 async def generar_pdf(fecha:str):
     if fecha:
-        var = {
-    "data": [
+        var = [
         {
             "_id": "648e5b3d46448fa5c63d3828",
             "fecha": "2023-10-10",
@@ -164,10 +163,10 @@ async def generar_pdf(fecha:str):
             "senCalidadAire": {"1": 40,"2":50 }
         }
     ]
-}        
+
         nombreArchivo = f'consulta_{fecha}.pdf'
         crearPdf(fecha,var)
-        time.sleep(2)
+        time.sleep(1)
         return FileResponse(path=nombreArchivo,media_type="application/pdf",filename= nombreArchivo)
         #RedirectResponse('https://www.youtube.com/results?search_query=yield+python')
         # return RedirectResponse(url_destino)
