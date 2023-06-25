@@ -82,7 +82,7 @@
     </div>
   
       {% for datos in senHumedadAire %}
-          <div class="bar" style="height: 70%;  left: 3%;"></div> 
+          <div class="bar" style="height: {{senHumedadAire[datos]}}%;  left:  {{senHumedadAire[datos][1]}}%;"></div> 
       {% endfor %}
 
   </div>
