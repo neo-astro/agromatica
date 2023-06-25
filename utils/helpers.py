@@ -33,29 +33,29 @@ def crearPdf(fecha,var):
     }
 
     
-    disAire = 3
-    disPh = 3
-    disHumedad = 3
-    disCalidad = 3
+    disAire = 1
+    disPh = 1
+    disHumedad = 1
+    disCalidad = 1
 
     for obj in var:
         new_registro = obj.copy()
         
         for clave, valor in new_registro['senHumedadAgua'].items():
             new_registro['senHumedadAgua'][clave] = [valor, disHumedad ]
-            disHumedad += 4
+            disHumedad += 3
 
         for clave, valor in new_registro['senHumedadAire'].items():
             new_registro['senHumedadAire'][clave] = [valor, disAire]
-            disAire += 4
+            disAire += 3
 
         for clave, valor in new_registro['senPh'].items():
             new_registro['senPh'][clave] = [valor, disPh]
-            disPh += 4
+            disPh += 3
 
         for clave, valor in new_registro['senCalidadAire'].items():
             new_registro['senCalidadAire'][clave] = [valor, disCalidad]
-            disCalidad += 4
+            disCalidad += 3
         registro.append(new_registro)
 
     for registro in var:
