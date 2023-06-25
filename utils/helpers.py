@@ -35,10 +35,11 @@ def crearPdf(fecha,registros):
     for i in registros:
         new_registro.append(i)
 
-    for clave in new_registro:
-        if clave == 'senHumedadAgua' | 'senPh'  | 'senHumedadAire' | 'senCalidadAire' :
-            clave = [new_registro[clave], valor_dis] 
-            valor_dis += 4
+    for obj in new_registro:
+        for clave in obj:
+            if clave == 'senHumedadAgua' or clave ==  'senPh' or clave ==  'senHumedadAire' or clave ==  'senCalidadAire' :
+                obj[clave] = [new_registro[clave], valor_dis] 
+                valor_dis += 4
 
 
     for registro in registros:

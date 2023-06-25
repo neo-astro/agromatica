@@ -75,9 +75,21 @@ config = {
 # print(len(x['senHumedadAgua']))
 
 
+
+var = [
+{
+    "_id": "648e5b3d46448fa5c63d3828",
+    "fecha": "2023-10-10",
+    "senHumedadAire": {"1": 40,"2":50 },
+    "senHumedadAgua": {"1": 40,"2":50 },
+    "senPh": {"1": 40,"2":50 },
+    "senCalidadAire": {"1": 40,"2":50 }
+}]
+
 xb = [1,2,3,1]
 y = ['a','b','f','g']    
-for i in y:
-    for e in xb:
-      print(i)
-      print('segundo for',e)
+
+for i in var :
+    for clave in i:
+      if clave == 'senHumedadAire' or clave =='senHumedadAgua':
+        print(clave)
