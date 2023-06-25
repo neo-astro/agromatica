@@ -19,7 +19,7 @@ def getDate():
 def crearPdf(fecha,registros):
     valor_dis = 3
     config = {}
-    new_registro = {}
+    new_registro = []
     # Cargar el template
     env = Environment(loader=FileSystemLoader("templates"))
     template = env.get_template("index.html")
@@ -33,8 +33,12 @@ def crearPdf(fecha,registros):
     }
 
     for i in registros:
-        new_registro[i] = [registros[i], valor_dis] 
-        valor_dis += 4
+        new_registro.append(i)
+
+    for clave in new_registro:
+        if clave == 'senHumedadAgua' | 'senPh'  | 'senHumedadAire' | 'senCalidadAire' :
+            clave = [new_registro[clave], valor_dis] 
+            valor_dis += 4
 
 
     for registro in registros:
