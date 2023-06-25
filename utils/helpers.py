@@ -33,7 +33,7 @@ def crearPdf(fecha,registros):
     }
 
     for i in registros:
-        new_registro[i] = [registro[i], valor_dis] 
+        new_registro[i] = [registros[i], valor_dis] 
         valor_dis += 4
 
 
