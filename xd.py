@@ -74,8 +74,6 @@ config = {
 # var['data'].append(config)
 # print(len(x['senHumedadAgua']))
 
-
-
 var = [
 {
     "_id": "648e5b3d46448fa5c63d3828",
@@ -89,7 +87,52 @@ var = [
 xb = [1,2,3,1]
 y = ['a','b','f','g']    
 
-for i in var :
-    for clave in i:
-      if clave == 'senHumedadAire' or clave =='senHumedadAgua':
-        print(clave)
+# for i in var :
+#     for clave in i:
+#       if clave == 'senHumedadAire' or clave =='senHumedadAgua':
+#          for c in i[clave]:
+          
+#         # i[clave] = [i[clave], 10]
+
+# print(var)
+var = [
+    {
+        "_id": "648e5b3d46448fa5c63d3828",
+        "fecha": "2023-10-10",
+        "senHumedadAire": {"1": 40, "2": 50},
+        "senHumedadAgua": {"1": 40, "2": 50},
+        "senPh": {"1": 40, "2": 50},
+        "senCalidadAire": {"1": 40, "2": 50}
+    }
+]
+
+nuevo_arreglo = []
+
+disAire = 3
+disPh = 3
+disHumedad = 3
+disCalidad = 3
+
+for obj in var:
+        
+    nuevo_objeto = obj.copy()
+
+    for clave, valor in nuevo_objeto['senHumedadAgua'].items():
+        nuevo_objeto['senHumedadAgua'][clave] = [valor, disHumedad ]
+        disHumedad += 3
+
+    for clave, valor in nuevo_objeto['senHumedadAire'].items():
+        nuevo_objeto['senHumedadAire'][clave] = [valor, disAire]
+        disAire += 3
+
+    for clave, valor in nuevo_objeto['senPh'].items():
+      nuevo_objeto['senPh'][clave] = [valor, disPh]
+      disPh += 3
+
+    for clave, valor in nuevo_objeto['senCalidadAire'].items():
+      nuevo_objeto['senCalidadAire'][clave] = [valor, disCalidad]
+      disCalidad += 3
+
+    nuevo_arreglo.append(nuevo_objeto)
+
+print(nuevo_arreglo)
