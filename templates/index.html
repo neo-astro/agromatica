@@ -82,9 +82,10 @@
     </div>
   
     {% for registro in senHumedadAire %}
-      {% for dis in distancia %}
-        <div class="bar" style="height: {{senHumedadAire[registro]}}%;  left: {{dis}}%;"></div> 
-      {% endfor %}
+        {% for dis in distancia[:len(senHumedadAire)] %}
+          <div class="bar" style="height: {{senHumedadAire[registro]}}%;  left: {{dis}}%;"></div> 
+        {% endfor %}
+      {% endif %}
     {% endfor %}
 
   </div>
