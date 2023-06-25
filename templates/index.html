@@ -82,17 +82,17 @@
     </div>
   
       {% for datos in senHumedadAire %}
-          <div class="bar" style="height: {{senHumedadAire[datos]}}%;  left:  {{senHumedadAire[datos][1]}}%;"></div> 
+          <div class="bar" style="height: {{senHumedadAire[datos][0]}}%;  left:  {{senHumedadAire[datos][1]}}%;"></div> 
       {% endfor %}
 
   </div>
   
-
+<!-- 
   {% for datos in senHumedadAire %}
   <div >{{senHumedadAire[datos]}}</div> 
   <div > value {{senHumedadAire[datos][0]}}</div> 
 
-  {% endfor %}
+  {% endfor %} -->
 
   
   <!-- <a href="http://127.0.0.1:8000/consultas/2023-10-10">Hola</a> -->
