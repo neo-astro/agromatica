@@ -25,11 +25,11 @@ def crearPdf(fecha,var):
     template = env.get_template("index.html")
 
     options = {
-        'page-size': 'A5',
-        'margin-top': '0.1in',
-        'margin-right': '0.1in',
-        'margin-bottom': '0.1in',
-        'margin-left': '0.1in'
+        # 'page-size': 'A5',
+        # 'margin-top': '0.1in',
+        # 'margin-right': '0.1in',
+        # 'margin-bottom': '0.1in',
+        # 'margin-left': '0.1in'
     }
 
     
