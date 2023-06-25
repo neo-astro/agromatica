@@ -38,7 +38,7 @@ def crearPdf(fecha,registros):
     for obj in new_registro:
         for clave in obj:
             if clave == 'senHumedadAgua' or clave ==  'senPh' or clave ==  'senHumedadAire' or clave ==  'senCalidadAire' :
-                obj[clave] = [new_registro[clave], valor_dis] 
+                obj[clave] = [obj[clave], valor_dis] 
                 valor_dis += 4
 
 
