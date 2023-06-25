@@ -17,6 +17,8 @@ def getDate():
     return fecha_formateada
 
 def crearPdf(fecha,registros):
+    valor_dis = 3
+    config = []
     # Cargar el template
     env = Environment(loader=FileSystemLoader("templates"))
     template = env.get_template("index.html")
@@ -28,8 +30,12 @@ def crearPdf(fecha,registros):
         'margin-bottom': '0.1in',
         'margin-left': '0.1in'
     }
-    config = [3,7,11,15,19,23,27,31,35,39,43,47,51,55,59,63,67,71,75,79,83,87,91,95]  
-    
+
+    for i in registros:
+        config.append(valor_dis)
+        valor_dis += 4
+
+
     for registro in registros:
         if registro.get("fecha") == fecha:
             registro['distancia']= config
