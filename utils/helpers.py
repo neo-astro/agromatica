@@ -18,7 +18,8 @@ def getDate():
 
 def crearPdf(fecha,registros):
     valor_dis = 3
-    config = []
+    config = {}
+    new_registro = {}
     # Cargar el template
     env = Environment(loader=FileSystemLoader("templates"))
     template = env.get_template("index.html")
@@ -32,14 +33,14 @@ def crearPdf(fecha,registros):
     }
 
     for i in registros:
-        config.append(valor_dis)
+        new_registro[i] = [registro[i], valor_dis] 
         valor_dis += 4
 
 
     for registro in registros:
         if registro.get("fecha") == fecha:
             registro['distancia']= config
-            html = template.render(registro)
+            html = template.render(new_registro)
             pdfkit.from_string(html,f'consulta_{fecha}.pdf',options=options)
 
     # ,configuration=pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')

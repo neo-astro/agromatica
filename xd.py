@@ -76,5 +76,8 @@ config = {
 
 
 xb = [1,2,3,1]
-for i in xb[:2]:
-    print(i)
+y = ['a','b','f','g']    
+for i in y:
+    for e in xb:
+      print(i)
+      print('segundo for',e)
