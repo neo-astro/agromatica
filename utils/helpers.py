@@ -17,11 +17,6 @@ def getDate():
     return fecha_formateada
 
 def crearPdf(fecha,var):
-    disAire = 0
-    disPh = 0
-    disHumedad = 0
-    disCalidad = 0
-    config = {}
     registro = []
     # Cargar el template
     env = Environment(loader=FileSystemLoader("templates"))
@@ -42,29 +37,29 @@ def crearPdf(fecha,var):
     disCalidad = 3
 
     for obj in var:
-        new_registro = obj.copy()
         
+        new_registro = obj.copy()
+
         for clave, valor in new_registro['senHumedadAgua'].items():
-            new_registro['senHumedadAgua'][clave] = [valor, disHumedad ]
-            disHumedad += 4
+          new_registro['senHumedadAgua'][clave] = [valor , disHumedad]
+          disHumedad +=4
 
         for clave, valor in new_registro['senHumedadAire'].items():
-            new_registro['senHumedadAire'][clave] = [valor, disAire]
-            disAire += 4
-            print('datos' , disAire,new_registro['senHumedadAire'][clave] )
+          new_registro['senHumedadAire'][clave] = [valor , disAire]
+          disAire +=4
 
         for clave, valor in new_registro['senPh'].items():
-            new_registro['senPh'][clave] = [valor, disPh]
-            disPh += 4
+          new_registro['senPh'][clave] = [valor , disPh]
+          disPh +=4
 
         for clave, valor in new_registro['senCalidadAire'].items():
-            new_registro['senCalidadAire'][clave] = [valor, disCalidad]
-            disCalidad += 4
+          new_registro['senCalidadAire'][clave] = [valor , disCalidad]
+          disCalidad +=4
+
         registro.append(new_registro)
 
     for registro in var:
         if registro.get("fecha") == fecha:
-            registro['distancia']= config
             html = template.render(registro)
             pdfkit.from_string(html,f'consulta_{fecha}.pdf',options=options)
     # ,configuration=pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')
