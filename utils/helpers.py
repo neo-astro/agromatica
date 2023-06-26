@@ -17,6 +17,10 @@ def getDate():
     return fecha_formateada
 
 def crearPdf(fecha,var):
+    disAire = 0
+    disPh = 0
+    disHumedad = 0
+    disCalidad = 0
     config = {}
     registro = []
     # Cargar el template
