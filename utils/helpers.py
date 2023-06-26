@@ -17,7 +17,6 @@ def getDate():
     return fecha_formateada
 
 def crearPdf(fecha,var):
-    valor_dis = 3
     config = {}
     registro = []
     # Cargar el template
