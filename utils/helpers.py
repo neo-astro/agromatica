@@ -38,25 +38,26 @@ def crearPdf(fecha,var):
 
     for obj in var:
         
-        new_registro = obj.copy()
+      new_registro = obj.copy()
 
-        for clave, valor in new_registro['senHumedadAgua'].items():
-          new_registro['senHumedadAgua'][clave] = [valor , disHumedad]
-          disHumedad +=4
+      for clave, valor in new_registro['senHumedadAgua'].items():
+        new_registro['senHumedadAgua'][clave] = [valor , disHumedad]
+        disHumedad +=4
 
-        for clave, valor in new_registro['senHumedadAire'].items():
-          new_registro['senHumedadAire'][clave] = [valor , disAire]
-          disAire +=4
+      for clave, valor in new_registro['senHumedadAire'].items():
+        new_registro['senHumedadAire'][clave] = [valor , disAire]
+        disAire +=4
 
-        for clave, valor in new_registro['senPh'].items():
-          new_registro['senPh'][clave] = [valor , disPh]
-          disPh +=4
+      for clave, valor in new_registro['senPh'].items():
+        new_registro['senPh'][clave] = [valor , disPh]
+        disPh +=4
 
-        for clave, valor in new_registro['senCalidadAire'].items():
-          new_registro['senCalidadAire'][clave] = [valor , disCalidad]
-          disCalidad +=4
+      for clave, valor in new_registro['senCalidadAire'].items():
+        new_registro['senCalidadAire'][clave] = [valor , disCalidad]
+        disCalidad +=4
 
-        registro.append(new_registro)
+      registro.append(new_registro)
+      print(new_registro)
 
     for registro in var:
         if registro.get("fecha") == fecha:
