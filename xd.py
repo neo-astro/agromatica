@@ -96,24 +96,40 @@ y = ['a','b','f','g']
 
 # print(var)
 var = [
-    {
-        "_id": "648e5b3d46448fa5c63d3828",
-        "fecha": "2023-10-10",
-        "senHumedadAire": {"1": 40,"2":50,"3": 70,"4":60,"5": 40,"6":50,"7": 70,"8":60,"9": 40,"10":50,"11": 70,"12":60,"13": 40,"14":50,"15": 70,"16":60,"17": 40,"18":50,"19": 70,"20":60,"21": 40,"22":50,"23": 70,"24":60 },
-        "senHumedadAgua": {"1": 40,"2":50 },
-        "senPh": {"1": 40,"2":50 },
-        "senCalidadAire": {"1": 40,"2":50 }
-    }
+{
+    "_id": "648e5b3d46448fa5c63d3828",
+    "fecha": "2023-10-10",
+    "senHumedadAire": {"1": 40,"2":50,"3": 70,"4":60,"5": 40,"6":50,"7": 70,"8":60,"9": 40,"10":50,"11": 70,"12":60,"13": 40,"14":50,"15": 70,"16":60,"17": 40,"18":50,"19": 70,"20":60,"21": 40,"22":50,"23": 70,"24":60 },
+    "senHumedadAgua": {"1": 40,"2":50 },
+    "senPh": {"1": 40,"2":50 },
+    "senCalidadAire": {"1": 40,"2":50 }
+},
+  {
+    "_id": "648e5b3d46448fa5c63d3828",
+    "fecha": "2023-10-12",
+    "senHumedadAire": {"1": 40,"2":50 },
+    "senHumedadAgua": {"1": 40,"2":50 },
+    "senPh": {"1": 40,"2":50 },
+    "senCalidadAire": {"1": 40,"2":50 }
+},
+  {
+    "_id": "648e5b3d46448fa5c63d3828",
+    "fecha": "2023-10-11",
+    "senHumedadAire": {"1": 40,"2":50 },
+    "senHumedadAgua": {"1": 40,"2":50 },
+    "senPh": {"1": 40,"2":50 },
+    "senCalidadAire": {"1": 40,"2":50 }
+}
 ]
-
 nuevo_arreglo = []
 
-disAire = 3
-disPh = 3
-disHumedad = 3
-disCalidad = 3
 
 for obj in var:
+    disAire = 3
+    disPh = 3
+    disHumedad = 3
+    disCalidad = 3
+
     new_registro = obj.copy()
 
     for clave, valor in new_registro['senHumedadAgua'].items():
@@ -132,7 +148,8 @@ for obj in var:
       new_registro['senCalidadAire'][clave] = [valor , disCalidad]
       disCalidad +=4
 
-    print(new_registro)
+    nuevo_arreglo.append(new_registro)
+print(nuevo_arreglo)
     # for clave, valor in nuevo_objeto['senHumedadAgua'].items():
     #     nuevo_objeto['senHumedadAgua'][clave] = [valor, disHumedad ]
     #     disHumedad += 3
