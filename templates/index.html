@@ -80,9 +80,30 @@
       <span>100</span>
     </div>
   
+      <h2>Sensor humedad Aire</h2>
       {% for datos in senHumedadAire %}
           <div class="bar" style="height: {{senHumedadAire[datos][0]}}%;  left:  {{senHumedadAire[datos][1]}}%;"></div> 
       {% endfor %}
+      <hr>
+
+      <h2>Sensor humedad agua</h2>
+      {% for datos in senHumedadAgua %}
+          <div class="bar" style="height: {{senHumedadAgua[datos][0]}}%;  left:  {{senHumedadAgua[datos][1]}}%;"></div> 
+      {% endfor %}
+      <hr>
+
+      <h2>Sensor de Ph</h2>
+      {% for datos in senPh %}
+          <div class="bar" style="height: {{senPh[datos][0]}}%;  left:  {{senPh[datos][1]}}%;"></div> 
+      {% endfor %}
+      <hr>
+
+      <h2>Sensor Calidad de Aire</h2>
+      {% for datos in senCalidadAire %}
+          <div class="bar" style="height: {{senCalidadAire[datos][0]}}%;  left:  {{senCalidadAire[datos][1]}}%;"></div> 
+      {% endfor %}
+
+
 
   </div>
   
