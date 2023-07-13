@@ -121,18 +121,14 @@ def prueba():
 #obtener los datos en tiempo real
 @app.post("/realTimeData")
 def getRealTimeData(data : DataRealTime):
-    senMedicion['senHumedadAgua'].append(data.senHumedadAgua)
-    senMedicion['senHumedadAire'].append(data.senHumedadAire)  
-    senMedicion['senPh'].append(data.senPh)
-    senMedicion['senCalidadAire'].append(data.senPh) 
-
-
-
-
-    newData= dict(data)
-    id = DbRegistros.insert_one(newData).inserted_id   
-    print(newData)
-    return str(id)
+    senMedicion['senHumedadAgua']=data.senHumedadAgua
+    senMedicion['senHumedadAire']=data.senHumedadAire  
+    senMedicion['senPh']=data.senPh
+    senMedicion['senCalidadAire']= data.senPh 
+    # newData= dict(data)
+    # id = DbRegistros.insert_one(newData).inserted_id   
+    # print(newData)
+    # return str(id)
 
 @app.get("/consultas/{fecha}")
 async def generar_pdf(fecha:str):
