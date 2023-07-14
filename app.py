@@ -123,10 +123,10 @@ def prueba():
 @app.post("/realTimeData")
 def getRealTimeData(data: dict):
     try:
-        senMedicion['senHumedadAgua']=data.senHumedadAgua
-        senMedicion['senHumedadAire']=data.senHumedadAire  
-        senMedicion['senPh']=data.senPh
-        senMedicion['senCalidadAire']= data.senPh 
+        # senMedicion['senHumedadAgua']=data.senHumedadAgua
+        # senMedicion['senHumedadAire']=data.senHumedadAire  
+        # senMedicion['senPh']=data.senPh
+        # senMedicion['senCalidadAire']= data.senPh 
 
         print('datos', data)
     except NameError as error:
