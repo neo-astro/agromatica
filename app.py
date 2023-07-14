@@ -121,7 +121,7 @@ def prueba():
 
 #obtener los datos en tiempo real
 @app.post("/realTimeData")
-def getRealTimeData(data: dict):
+def getRealTimeData(data: DataRealTime):
     try:
         # senMedicion['senHumedadAgua']=data.senHumedadAgua
         # senMedicion['senHumedadAire']=data.senHumedadAire  
