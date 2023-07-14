@@ -13,7 +13,7 @@ class Data(BaseModel):
 
 
 class DataRealTime(BaseModel):
-  senHumedadAgua: List[str]
-  senHumedadAire: List[str]
-  senPh:          List[str]
-  senCalidadAire: List[str]
+  senHumedadAgua: str
+  senHumedadAire: str
+  senPh:          str
+  senCalidadAire: str

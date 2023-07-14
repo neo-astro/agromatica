@@ -11,6 +11,7 @@ from bson import ObjectId
 from config.db import client
 
 from models.data import Data,DataRealTime
+from typing import Dict
 
 from schemas.dataSchemas import datosEntity
 import random
@@ -53,8 +54,8 @@ senMedicion = {
 #entregar datos al frontend en tiempo real
 @app.get("/")
 def getRealTime():
-    for i in senMedicion:
-        senMedicion[i] = random.randint(0,101)
+    # for i in senMedicion:
+    #     senMedicion[i] = random.randint(0,101)
     return senMedicion
 
 
@@ -120,12 +121,17 @@ def prueba():
 
 #obtener los datos en tiempo real
 @app.post("/realTimeData")
-def getRealTimeData(data : DataRealTime):
-    senMedicion['senHumedadAgua']=data.senHumedadAgua
-    senMedicion['senHumedadAire']=data.senHumedadAire  
-    senMedicion['senPh']=data.senPh
-    senMedicion['senCalidadAire']= data.senPh 
-    # newData= dict(data)
+def getRealTimeData(data: dict):
+    try:
+        senMedicion['senHumedadAgua']=data.senHumedadAgua
+        senMedicion['senHumedadAire']=data.senHumedadAire  
+        senMedicion['senPh']=data.senPh
+        senMedicion['senCalidadAire']= data.senPh 
+
+        print('datos', data)
+    except NameError as error:
+        print(error)
+    #  newData= dict(data)
     # id = DbRegistros.insert_one(newData).inserted_id   
     # print(newData)
     # return str(id)
