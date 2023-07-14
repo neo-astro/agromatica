@@ -10,7 +10,7 @@ from bson import ObjectId
 #db
 from config.db import client
 
-from models.data import Data,DataRealTime
+from models.data import Data,DataRealTime, EstadoAereador, InfoAlimentador
 from typing import Dict
 
 from schemas.dataSchemas import datosEntity
@@ -47,6 +47,10 @@ senMedicion = {
         "senPh":          0,
         "senCalidadAire": 0
 }
+
+info_alimentador = {"nivel_alimentador": 0, 'estado_alimentador': False}
+estado_aereador = {"estado_aereador": False}
+
 
 #en la base de datos se guardara el promedio de la medicion de los sensores por horas
 
@@ -173,19 +177,12 @@ async def generar_pdf(fecha:str):
         #RedirectResponse('https://www.youtube.com/results?search_query=yield+python')
         # return RedirectResponse(url_destino)
  
-
-
-
-
-
 # @app.post("/addData")
 # def addData(dato:Data):
 #     newData= dict(dato)
 #     id = DbRegistros.insert_one(newData).inserted_id   
 #     print(newData)
 #     return str(id)
-
-
 
 # @app.get("/consultas/{fecha}")
 # async def generar_pdf(fecha:str):
@@ -206,3 +203,20 @@ async def generar_pdf(fecha:str):
 #         crearPdf(fecha,var)
 #         time.sleep(2)
 #         return FileResponse(path=nombreArchivo,filename= nombreArchivo)
+
+@app.post("/alimentador")
+def alimentador(data: InfoAlimentador):
+    for key in data:
+        info_alimentador[key] = data[key]
+    
+@app.get("/alimentador")
+def alimentador():
+    return info_alimentador
+
+@app.post("/aereador")
+def alimentador(data: EstadoAereador):
+    estado_aereador['estado_aereador'] = data['estado_aereador']
+    
+@app.get("/aereador")
+def aereador():
+    return estado_aereador
