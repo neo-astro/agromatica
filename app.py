@@ -39,21 +39,32 @@ app.add_middleware(
 
 DbRegistros=client.DbAgromatica.Registros
 
-
 #datos para mostrar en tiempo real
 senMedicion = {
-        "senHumedadAgua": 0,
-        "senHumedadAire": 0,
-        "senPh":          0,
-        "senCalidadAire": 0
+        "senHumedadAgua": '0',
+        "senHumedadAire": '0',
+        "senPh":          '0',
+        "senCalidadAire": '0'
 }
 
-info_alimentador = {"nivel_alimentador": 0, 'estado_alimentador': False}
+#datos almacenados para promedio de hora
+
+senHumedadAgua = 0
+senHumedadAire = 0
+senPh = 0
+senCalidadAire = 0
+
+senMedicionPromedio = {
+        "senHumedadAgua": '0',
+        "senHumedadAire": '0',
+        "senPh":          '0',
+        "senCalidadAire": '0'
+}
+
+info_alimentador = {"nivel_alimentador": '0', 'estado_alimentador': False}
 estado_aereador = {"estado_aereador": False}
 
-
 #en la base de datos se guardara el promedio de la medicion de los sensores por horas
-
 
 #entregar datos al frontend en tiempo real
 @app.get("/")
@@ -61,8 +72,6 @@ def getRealTime():
     # for i in senMedicion:
     #     senMedicion[i] = random.randint(0,101)
     return senMedicion
-
-
 
 #para ver los registros de la db
 @app.get("/verDatos")
@@ -73,7 +82,6 @@ def getAllData():
     for doc in data:
         doc['_id'] = str(doc['_id'])
     return  data
-
 
 #guardar datos para tiempo real
 
@@ -130,8 +138,7 @@ def getRealTimeData(data: DataRealTime):
         senMedicion['senHumedadAgua']=data.senHumedadAgua
         senMedicion['senHumedadAire']=data.senHumedadAire  
         senMedicion['senPh']=data.senPh
-        senMedicion['senCalidadAire']= data.senPh 
-
+        senMedicion['senCalidadAire']= data.senPh
         print('datos', data)
     except NameError as error:
         print(error)
