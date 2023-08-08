@@ -9,14 +9,11 @@ from fastapi.responses import FileResponse,RedirectResponse,Response
 from bson import ObjectId
 #db
 from config.db import client
-
+from helpers import*
 from models.data import Data,DataRealTime, EstadoAereador, InfoAlimentador
 from typing import Dict
-
 from schemas.dataSchemas import datosEntity
 import random
-from utils.helpers import crearPdf
-
 from utils.helpers import *
 
 
@@ -91,7 +88,7 @@ async def saveData(datos: dict):
     hora = str(getHora())
     # el tipo de diccionario que me envia
     registro = {
-        "fecha":    getHora(),
+        "fecha":getDate(),
         "senHumedadAgua": {},
         "senHumedadAire": {},
         "senPh":          {},
