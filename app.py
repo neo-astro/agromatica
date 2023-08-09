@@ -82,7 +82,7 @@ def getAllData():
 #guardar datos para tiempo real
 
 @app.post("/saveData")
-async def saveData(datos: dict):
+async def saveData(datos: Data):
 
     hora = str(getHora())
     # el tipo de diccionario que me envia
@@ -113,7 +113,7 @@ async def saveData(datos: dict):
         registro['senCalidadAire'][hora] = datos.get('senCalidadAire')
         newRegistro  = dict(registro) 
         DbRegistros.insert_one(newRegistro) 
-        return 'error'
+        return 'ok'
 
 
 
