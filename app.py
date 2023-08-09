@@ -19,10 +19,7 @@ from utils.helpers import *
 app = FastAPI()
 
 origins = [
-    "http://localhost",
-    "http://localhost:8080",
-    "*"
-    # Agrega aquí los dominios permitidos para acceder a tu API
+    "*"    # Agrega aquí los dominios permitidos para acceder a tu API
 ]
 
 app.add_middleware(
@@ -217,7 +214,7 @@ def alimentador():
     return info_alimentador
 
 @app.post("/aereador")
-def alimentador(data: EstadoAereador):
+def aereador(data: EstadoAereador):
     estado_aereador['estado_aereador'] = data['estado_aereador']
     
 @app.get("/aereador")
