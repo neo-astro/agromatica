@@ -62,8 +62,8 @@ estado_aereador = {"estado_aereador": False}
 #entregar datos al frontend en tiempo real
 @app.get("/")
 def getRealTime():
-    # for i in senMedicion:
-    #     senMedicion[i] = random.randint(0,101)
+    for i in senMedicion:
+        senMedicion[i] = random.randint(50,101)
     return senMedicion
 
 #para ver los registros de la db
