@@ -45,7 +45,6 @@ def usuarioNuevo(m):
   for user in m.new_chat_members:
     bot.send_message(m.chat.id, f'Bienvenido <b> {user.first_name}</b>', parse_mode='HTML')
 
-if __name__ == '__main__':
   # bot.delete_webhook()
   print('running')
   bot.infinity_polling(timeout= 60)
