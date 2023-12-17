@@ -16,7 +16,46 @@ import random
 from utils.helpers import *
 
 
+
+
+from datetime import datetime,timedelta
+import re
+import os
+from pprint import pprint
+from shutil import move
+import telebot 
+
+# db_arc_usuario_nuevos ='./usuarios_nuevos'
+# db_arc_usuarios_eliminados ='./usuarios_eliminados'
+
+# def registartIngresoUsuario(x):
+#   with open(db_arc_usuarios_eliminados, 'w+', encoding='utf8') as doc :
+#     doc.write(x)
+
+# def eliminarUsuario():
+#   pass
+
+token = '6951329690:AAFC3k1p4sVefnLOzYQqi9xS7f1glii6Kx8'
+bot = telebot.TeleBot(token)
+
+#carpeta db
+@bot.message_handler(content_types=["new_Chat_members"])
+def usuarioNuevo(m):
+  print('new user')
+  for user in m.new_chat_members:
+    bot.send_message(m.chat.id, f'Bienvenido <b> {user.first_name}</b>', parse_mode='HTML')
+
+if __name__ == '__main__':
+  # bot.delete_webhook()
+  print('running')
+  bot.infinity_polling(timeout= 60)
+
+
+
+
+
 app = FastAPI()
+
 
 origins = [
     "*"    # Agrega aquí los dominios permitidos para acceder a tu API
